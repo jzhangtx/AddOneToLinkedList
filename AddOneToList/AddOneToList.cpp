@@ -67,31 +67,19 @@ void FreeList(ListNode* pNode)
 bool AddOne(ListNode* head)
 {
     if (head == nullptr)
-        return false;
-
-    bool resultIsTen = false;
-    if (head->next == nullptr)
-    {
-        head->data++;
-        if (head->data == 10)
-        {
-            resultIsTen = true;
-            head->data = 0;
-        }
-        return resultIsTen;
-    }
+        return true;
 
     if (AddOne(head->next))
     {
         head->data++;
         if (head->data == 10)
         {
-            resultIsTen = true;
             head->data = 0;
+            return true;
         }
     }
 
-    return resultIsTen;
+    return false;
 }
 
 ListNode* AddOneToList(ListNode* head)
